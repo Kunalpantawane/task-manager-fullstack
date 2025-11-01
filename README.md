@@ -81,7 +81,7 @@ JWT_SECRET=your_jwt_secret_key
 ### Clone the Repo
 
 ```bash
-git clone https://github.com/Kunal-41/task-manager-fullstack.git
+git clone https://github.com/Kunalpantawnane/task-manager-fullstack.git
 cd task-manager-fullstack
 ```
 
@@ -164,7 +164,7 @@ Then open:
 ## 👤 Author
 
 Made by **Kunal Pantawane**  
-[GitHub](https://github.com/Kunal-41)
+[GitHub](https://github.com/Kunalpantawane) | [LinkedIn](https://www.linkedin.com/in/kunal-pantawane)
 
 ---
 
