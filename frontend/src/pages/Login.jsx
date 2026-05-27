@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
-import { API_ENDPOINTS } from '../config/api';
+import { API_ENDPOINTS, apiClient } from '../config/api';
 import './Auth.css';
 
 const Login = () => {
@@ -18,7 +17,7 @@ const Login = () => {
     setError('');
     
     try {
-      const res = await axios.post(API_ENDPOINTS.AUTH.LOGIN, { email, password });
+      const res = await apiClient.post(API_ENDPOINTS.AUTH.LOGIN, { email, password });
       localStorage.setItem('token', res.data.token);
       navigate('/dashboard');
     } catch (error) {

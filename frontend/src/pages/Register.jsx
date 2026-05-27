@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import { API_ENDPOINTS } from '../config/api';
+import { API_ENDPOINTS, apiClient } from '../config/api';
 import './Auth.css';
 
 const Register = () => {
@@ -30,7 +29,7 @@ const Register = () => {
     }
 
     try {
-      await axios.post(API_ENDPOINTS.AUTH.REGISTER, { email, password });
+      await apiClient.post(API_ENDPOINTS.AUTH.REGISTER, { email, password });
       navigate('/login', { 
         state: { message: 'Registration successful! You can now log in.' }
       });

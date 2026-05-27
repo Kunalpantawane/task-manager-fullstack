@@ -7,7 +7,12 @@
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["task-manager", "node", "express", "mongodb"],
+  "keywords": [
+    "task-manager",
+    "node",
+    "express",
+    "mongodb"
+  ],
   "author": "Kunal Pantawane",
   "license": "ISC",
   "description": "Backend API for Task Manager Application",
@@ -16,6 +21,8 @@
     "cors": "^2.8.5",
     "dotenv": "^17.0.0",
     "express": "^5.1.0",
+    "express-rate-limit": "^8.5.2",
+    "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.16.1"
   }

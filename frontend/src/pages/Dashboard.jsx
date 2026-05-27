@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { API_ENDPOINTS, createAuthHeaders } from '../config/api';
+import { API_ENDPOINTS, createAuthHeaders, apiClient } from '../config/api';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -13,10 +12,12 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchTasks();
+    const controller = new AbortController();
+    fetchTasks(controller.signal);
+    return () => controller.abort();
   }, []);
 
-  const fetchTasks = async () => {
+  const fetchTasks = async (signal) => {
     try {
       const token = localStorage.getItem('token');
       if (!token) {
@@ -24,12 +25,14 @@ const Dashboard = () => {
         return;
       }
 
-      const response = await axios.get(API_ENDPOINTS.TASKS.GET_ALL, {
-        headers: createAuthHeaders()
+      const response = await apiClient.get(API_ENDPOINTS.TASKS.GET_ALL, {
+        headers: createAuthHeaders(),
+        signal
       });
       setTasks(response.data);
       setLoading(false);
     } catch (error) {
+      if (error.name === 'AbortError') return;
       setError('Failed to fetch tasks');
       setLoading(false);
       if (error.response?.status === 401) {
@@ -42,7 +45,7 @@ const Dashboard = () => {
   const createTask = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(API_ENDPOINTS.TASKS.CREATE, newTask, {
+      const response = await apiClient.post(API_ENDPOINTS.TASKS.CREATE, newTask, {
         headers: createAuthHeaders()
       });
       setTasks([...tasks, response.data]);
@@ -54,7 +57,7 @@ const Dashboard = () => {
 
   const toggleComplete = async (taskId, completed) => {
     try {
-      const response = await axios.put(API_ENDPOINTS.TASKS.UPDATE(taskId), 
+      const response = await apiClient.put(API_ENDPOINTS.TASKS.UPDATE(taskId), 
         { completed: !completed },
         { headers: createAuthHeaders() }
       );
@@ -66,7 +69,7 @@ const Dashboard = () => {
 
   const deleteTask = async (taskId) => {
     try {
-      await axios.delete(API_ENDPOINTS.TASKS.DELETE(taskId), {
+      await apiClient.delete(API_ENDPOINTS.TASKS.DELETE(taskId), {
         headers: createAuthHeaders()
       });
       setTasks(tasks.filter(task => task._id !== taskId));

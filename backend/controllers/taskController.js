@@ -96,7 +96,7 @@ exports.updateTask = async (req, res) => {
       }
     }
 
-    if (description !== undefined && description.length > 500) {
+    if (description !== undefined && description !== null && description.length > 500) {
       return res.status(400).json({ message: "Task description must be less than 500 characters" });
     }
 
@@ -106,7 +106,7 @@ exports.updateTask = async (req, res) => {
 
     const updateData = {};
     if (title !== undefined) updateData.title = title.trim();
-    if (description !== undefined) updateData.description = description.trim();
+    if (description !== undefined) updateData.description = description ? description.trim() : '';
     if (completed !== undefined) updateData.completed = completed;
     if (priority !== undefined) updateData.priority = priority;
 

@@ -342,23 +342,6 @@ By exploring this project, you'll learn:
 
 ---
 
-## 🔮 Future Enhancements
-
-- [ ] Task categories and tags
-- [ ] Due dates and reminders
-- [ ] Task search functionality
-- [ ] Drag-and-drop task reordering
-- [ ] Dark/Light theme toggle
-- [ ] Email notifications
-- [ ] Task sharing between users
-- [ ] File attachments for tasks
-- [ ] Activity log/history
-- [ ] Export tasks to CSV/PDF
-- [ ] Progressive Web App (PWA) support
-- [ ] Real-time updates with WebSockets
-
----
-
 ## 👤 Author
 
 **Kunal Pantawane**
@@ -386,19 +369,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 🙏 Acknowledgments
 
-- React team for an amazing framework
-- MongoDB for the database solution
-- Express.js community for excellent documentation
-- All contributors and testers
 
----
 
-<div align="center">
-
-Made with ❤️ by Kunal Pantawane
-
-⭐ Star this repository if you found it helpful!
-
-</div>
