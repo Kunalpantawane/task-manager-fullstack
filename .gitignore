@@ -17,8 +17,8 @@ Thumbs.db
 .venv/
 
 # Ignore local documentation artifacts
-docs/
-documentation/
+/docs/
+/documentation/
 
 node_modules/
 .env
