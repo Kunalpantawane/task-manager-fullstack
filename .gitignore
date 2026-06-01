@@ -16,8 +16,8 @@ Thumbs.db
 .vscode/
 .venv/
 
-# Ignore local documentation artifacts
-/docs/
+# Ignore local documentation artifactsd
+doc/
 /documentation/
 
 node_modules/
